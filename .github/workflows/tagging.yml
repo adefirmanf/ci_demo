@@ -35,4 +35,6 @@ jobs:
       # DATE=20220215
       # BUILD_NUMBER=12
       - name: Run a git tagging
-        run: echo "$(git describe --abbrev=0)"
+        run: |
+          git fetch --tags
+          echo "$(git describe --abbrev=0)"
