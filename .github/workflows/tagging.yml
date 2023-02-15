@@ -30,7 +30,16 @@ jobs:
         run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      # Versioning format : <major>.<date>.<build_number>
+      #
+      # VERSION=1.20220215.12
+      # MAJOR=1
+      # DATE=20220215
+      # BUILD_NUMBER=12
+      - name: Run a git tagging
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          VERSION=$(git describe --tags --abbrev=0)
+          MAJOR=$(echo $version | cut -d '.' -f 1)
+          DATE=$(echo $version | cut -d '.' -f 2) 
+          BUILD_NUMBER=$(echo $version | cut -d '.' -f 3)
+          echo $VERSION
