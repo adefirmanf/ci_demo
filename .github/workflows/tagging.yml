@@ -37,10 +37,4 @@ jobs:
       # DATE=20220215
       # BUILD_NUMBER=12
       - name: Run a git tagging
-        run: |
-          git fetch --tags
-          VERSION=$(git describe --tags --abbrev=0)
-          MAJOR=$(echo $VERSION | cut -d '.' -f 1)
-          DATE=$(echo $VERSION | cut -d '.' -f 2) 
-          BUILD_NUMBER=$(echo $VERSION | cut -d '.' -f 3)
-          echo $VERSION
+        run: echo "$(git describe --abbrev=0)"
