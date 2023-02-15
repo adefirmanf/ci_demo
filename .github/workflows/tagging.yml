@@ -39,7 +39,7 @@ jobs:
       - name: Run a git tagging
         run: |
           VERSION=$(git describe --tags --abbrev=0)
-          MAJOR=$(echo $version | cut -d '.' -f 1)
-          DATE=$(echo $version | cut -d '.' -f 2) 
-          BUILD_NUMBER=$(echo $version | cut -d '.' -f 3)
+          MAJOR=$(echo $VERSION | cut -d '.' -f 1)
+          DATE=$(echo $VERSION | cut -d '.' -f 2) 
+          BUILD_NUMBER=$(echo $VERSION | cut -d '.' -f 3)
           echo $VERSION
