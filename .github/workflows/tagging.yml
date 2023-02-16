@@ -38,7 +38,7 @@ jobs:
       - name: Prepare tagging 
         run: |
           git fetch --all --tags > /dev/null
-          PREV_VERSION=$(git tag -l --sort=-refname | head -1)
+          PREV_VERSION=$(git tag -l --sort=-creatordate | head -1)
           PREV_BUILD_NUMBER=$(echo $PREV_VERSION | cut -d '.' -f 3)
           PREV_MAJOR=$(echo $PREV_VERSION | cut -d '.' -f 1)
           
