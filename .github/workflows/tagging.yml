@@ -50,4 +50,4 @@ jobs:
 
           echo Recent Build : "${{env.RECENT_BUILD_NUMBER}}" 
       - name: Tag version 
-        run: echo "${{env.RECENT_VERSION}}" 
+        run: echo "${{env.RECENT_DATE}}" 
