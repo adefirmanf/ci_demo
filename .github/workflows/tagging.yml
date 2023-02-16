@@ -45,7 +45,7 @@ jobs:
           RECENT_DATE=$(date +'%m%d%Y')
           RECENT_BUILD_NUMBER=$(expr $PREV_BUILD_NUMBER + 1)
           
-          RECENT_VERSION=$(echo $PREV_MAJOR.$RECENT_DATE.$RECENT_BUILD_NUMBER)
+          RECENT_VERSION=$(echo $PREV_MAJOR.$RECENT_DATE.$RECENT_BUILD_NUMBER) 
           echo $RECENT_VERSION
 
       - name: Tag version 
