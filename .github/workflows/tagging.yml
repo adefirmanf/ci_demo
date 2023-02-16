@@ -45,4 +45,4 @@ jobs:
           echo "Version : " $RECENT_VERSION
     
       - name: Tag version
-        run: echo ${{ env.RECENT_VERSION }} 
+        run: echo "${{env.RECENT_VERSION}}" 
