@@ -44,7 +44,7 @@ jobs:
           echo "PREV_DATE=$(echo $PREV_VERSION | cut -d '.' -f 2)" >> $GITHUB_ENV
           echo "PREV_BUILD_NUMBER=$(echo $PREV_VERSION | cut -d '.' -f 3)" >> $GITHUB_ENV
           
-          echo "RECENT_DATE=$(date +'%m%d%Y') >> $GITHUB_ENV
+          echo "RECENT_DATE=$(date +'%m%d%Y')" >> $GITHUB_ENV
           echo "RECENT_BUILD_NUMBER=$(expr $PREV_BUILD_NUMBER + 1) >> $GITHUB_ENV
           echo Version : "$PREV_VERSION" 
 
