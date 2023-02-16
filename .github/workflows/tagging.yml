@@ -37,4 +37,8 @@ jobs:
       - name: Run a git tagging
         run: |
           git fetch --all --tags
-          git tag -l --sort=-refname | head -1
+          VERSION=$(  git tag -l --sort=-refname | head -1)
+          MAJOR=$(echo $VERSION | cut -d '.' -f 1)
+          DATE=$(echo $VERSION | cut -d '.' -f 2) 
+          BUILD_NUMBER=$(echo $VERSION | cut -d '.' -f 3)
+          echo $VERSION
