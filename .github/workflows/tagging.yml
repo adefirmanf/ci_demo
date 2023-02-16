@@ -35,7 +35,7 @@ jobs:
       # DATE=20220215
       # BUILD_NUMBER=12now=$(date)
       # echo "RECENT_VERSION=$({{env.PREV_MAJOR}}.${{env.RECENT_DATE}}.${{env.RECENT_BUILD_NUMBER}})" >> $GITHUB_ENV
-      - name: Print a recent tagging version and set version
+      - name: Prepare tagging 
         run: |
           git fetch --all --tags > /dev/null
           PREV_VERSION=$(git tag -l --sort=-refname | head -1)
@@ -49,4 +49,6 @@ jobs:
           echo $RECENT_VERSION
 
       - name: Tag version ${{env.RECENT_VERSION}}
-        run: echo "${{env.RECENT_VERSION}}" 
+        run: |
+          git tag ${{env.RECENT_VERSION}}
+          git push origin ${{env.RECENT_VERSION}}
