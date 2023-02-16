@@ -34,15 +34,18 @@ jobs:
       # MAJOR=1
       # DATE=20220215
       # BUILD_NUMBER=12now=$(date)
-      - name: Print a recent tagging version
+      - name: Print a recent tagging version and set version
         run: |
           git fetch --all --tags > /dev/null
-          echo "RECENT_VERSION=$(git tag -l --sort=-refname | head -1)" >> $GITHUB_ENV
-          RECENT_MAJOR=$(echo $RECENT_VERSION | cut -d '.' -f 1)
-          RECENT_DATE=$(echo $RECENT_VERSION | cut -d '.' -f 2) 
-          RECENT_BUILD_NUMBER=$(echo $RECENT_VERSION | cut -d '.' -f 3)
+          echo "PREV_VERSION=$(git tag -l --sort=-refname | head -1)" >> $GITHUB_ENV
+          echo "PREV_MAJOR=$(echo $PREV_VERSION | cut -d '.' -f 1)" >> $GITHUB_ENV
+          echo "PREV_DATE=$(echo $PREV_VERSION | cut -d '.' -f 2)" >> $GITHUB_ENV
+          echo "PREV_BUILD_NUMBER=$(echo $PREV_VERSION | cut -d '.' -f 3)" >> $GITHUB_ENV
           
-          echo "Version : " $RECENT_VERSION
-    
-      - name: Tag version
+          echo "RECENT_DATE=$(echo date +'%m%d%Y') >> $GITHUB_ENV
+          echo "RECENT_BUILD_NUMBER=$(expr $PREV_BUILD_NUMBER + 1) >> $GITHUB_ENV
+          echo Version : "${{env.PREV_VERSION}}" 
+
+          echo Recent Build : "${{env.RECENT_BUILD_NUMBER}}" 
+      - name: Tag version 
         run: echo "${{env.RECENT_VERSION}}" 
