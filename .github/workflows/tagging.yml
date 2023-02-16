@@ -37,7 +37,7 @@ jobs:
       - name: Print a recent tagging version
         run: |
           git fetch --all --tags > /dev/null
-          echo "{RECENT_VERSION}={$(git tag -l --sort=-refname | head -1)}" >> $GITHUB_ENV 
+          echo "RECENT_VERSION=$(git tag -l --sort=-refname | head -1)" >> $GITHUB_ENV
           RECENT_MAJOR=$(echo $RECENT_VERSION | cut -d '.' -f 1)
           RECENT_DATE=$(echo $RECENT_VERSION | cut -d '.' -f 2) 
           RECENT_BUILD_NUMBER=$(echo $RECENT_VERSION | cut -d '.' -f 3)
