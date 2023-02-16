@@ -7,8 +7,6 @@ on:
   # Triggers the workflow on push or pull request events but only for the "release" branch
   push:
     branches: [ "release" ]
-  pull_request:
-    branches: [ "release" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -42,7 +40,7 @@ jobs:
           PREV_BUILD_NUMBER=$(echo $PREV_VERSION | cut -d '.' -f 3)
           PREV_MAJOR=$(echo $PREV_VERSION | cut -d '.' -f 1)
           
-          RECENT_DATE=$(date +'%m%d%Y')
+          RECENT_DATE=$(date +'%Y%m%d')
           RECENT_BUILD_NUMBER=$(expr $PREV_BUILD_NUMBER + 1)
           
           echo "RECENT_VERSION=$(echo $PREV_MAJOR.$RECENT_DATE.$RECENT_BUILD_NUMBER)" >> $GITHUB_ENV
