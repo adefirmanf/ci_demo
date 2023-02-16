@@ -46,9 +46,9 @@ jobs:
           echo "PREV_BUILD_NUMBER=$(echo $PREV_BUILD_NUMBER)" >> $GITHUB_ENV
           
           echo "RECENT_DATE=$(date +'%m%d%Y')" >> $GITHUB_ENV
-          echo "RECENT_BUILD_NUMBER=$(expr $PREV_BUILD_NUMBER -a 1)" >> $GITHUB_ENV
+          echo "RECENT_BUILD_NUMBER=$(expr $PREV_BUILD_NUMBER + 1)" >> $GITHUB_ENV
           echo Version : "$PREV_VERSION" 
 
           echo Recent Build : "${{env.RECENT_BUILD_NUMBER}}" 
       - name: Tag version 
-        run: echo "${{env.RECENT_DATE}}" 
+        run: echo "${{env.RECEcdNT_DATE}}" 
